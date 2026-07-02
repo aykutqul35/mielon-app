@@ -41,7 +41,7 @@ export default function AdminLoginScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-slate-50 justify-center px-8">
+    <SafeAreaView className="flex-1 bg-mielon-cream justify-center px-8">
       <TouchableOpacity 
         onPress={() => navigation.goBack()} 
         className="absolute top-12 left-6 p-2"
@@ -51,17 +51,17 @@ export default function AdminLoginScreen() {
 
       <View className="items-center mb-8">
         <View className="w-20 h-20 bg-orange-100 rounded-full items-center justify-center mb-4">
-          <MaterialCommunityIcons name="shield-lock-outline" size={40} color="#fb923c" />
+          <MaterialCommunityIcons name="shield-lock-outline" size={40} color="#D4AF37" />
         </View>
-        <Text className="text-3xl font-bold text-slate-800">Yönetici Girişi</Text>
-        <Text className="text-slate-500 mt-2 text-center">Sadece yetkili personel içindir.</Text>
+        <Text className="text-3xl font-bold text-mielon-charcoal">Yönetici Girişi</Text>
+        <Text className="text-mielon-brown mt-2 text-center">Sadece yetkili personel içindir.</Text>
       </View>
 
       <View className="mb-8 space-y-4">
         <View>
-          <Text className="text-sm font-semibold text-slate-700 mb-2 ml-1">E-posta</Text>
+          <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">E-posta</Text>
           <TextInput 
-            className="bg-white px-4 py-4 rounded-2xl border border-slate-200 text-slate-800 shadow-sm"
+            className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
             placeholder="admin@mielon.com"
             placeholderTextColor="#94a3b8"
             keyboardType="email-address"
@@ -72,9 +72,9 @@ export default function AdminLoginScreen() {
         </View>
 
         <View>
-          <Text className="text-sm font-semibold text-slate-700 mb-2 ml-1">Şifre</Text>
+          <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Şifre</Text>
           <TextInput 
-            className="bg-white px-4 py-4 rounded-2xl border border-slate-200 text-slate-800 shadow-sm"
+            className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
             placeholder="••••••••"
             placeholderTextColor="#94a3b8"
             secureTextEntry
@@ -85,7 +85,7 @@ export default function AdminLoginScreen() {
       </View>
 
       <TouchableOpacity 
-        className={`py-4 rounded-2xl items-center shadow-md flex-row justify-center ${loading ? 'bg-orange-300' : 'bg-orange-500'}`}
+        className={`py-4 rounded-2xl items-center shadow-md flex-row justify-center ${loading ? 'bg-orange-300' : 'bg-mielon-gold'}`}
         onPress={handleLogin}
         disabled={loading}
       >

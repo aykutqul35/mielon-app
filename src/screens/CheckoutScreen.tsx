@@ -55,7 +55,7 @@ export default function CheckoutScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-slate-50">
+    <SafeAreaView className="flex-1 bg-mielon-cream">
       <ScrollView className="flex-1 px-6 pt-4" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 40 }}>
         
         {/* Header */}
@@ -64,32 +64,32 @@ export default function CheckoutScreen() {
             <MaterialCommunityIcons name="arrow-left" size={28} color="#334155" />
           </TouchableOpacity>
           <View className="mt-2">
-            <Text className="text-3xl font-bold text-slate-800">Randevu Onayı</Text>
-            <Text className="text-slate-500 mt-1">Son bir adım kaldı!</Text>
+            <Text className="text-3xl font-bold text-mielon-charcoal">Randevu Onayı</Text>
+            <Text className="text-mielon-brown mt-1">Son bir adım kaldı!</Text>
           </View>
         </View>
 
         {/* Sipariş Özeti */}
         <View className="bg-white rounded-3xl p-6 shadow-sm mb-6 border border-slate-100/50">
-          <Text className="text-lg font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2">Rezervasyon Özeti</Text>
+          <Text className="text-lg font-bold text-mielon-charcoal mb-4 border-b border-slate-100 pb-2">Rezervasyon Özeti</Text>
           <View className="space-y-3">
             <View className="flex-row justify-between mb-2">
-              <Text className="text-slate-500">Hizmet</Text>
-              <Text className="font-semibold text-slate-700">{service === 'Grooming' ? 'Pet Kuaför' : 'Pet Otel'}</Text>
+              <Text className="text-mielon-brown">Hizmet</Text>
+              <Text className="font-semibold text-mielon-charcoal">{service === 'Grooming' ? 'Pet Kuaför' : 'Pet Otel'}</Text>
             </View>
             <View className="flex-row justify-between mb-2">
-              <Text className="text-slate-500">Türü</Text>
-              <Text className="font-semibold text-slate-700">{petInfo.species === 'Dog' ? 'Köpek' : 'Kedi'}</Text>
+              <Text className="text-mielon-brown">Türü</Text>
+              <Text className="font-semibold text-mielon-charcoal">{petInfo.species === 'Dog' ? 'Köpek' : 'Kedi'}</Text>
             </View>
             <View className="flex-row justify-between">
-              <Text className="text-slate-500">Cinsi</Text>
-              <Text className="font-semibold text-slate-700">{petInfo.breed}</Text>
+              <Text className="text-mielon-brown">Cinsi</Text>
+              <Text className="font-semibold text-mielon-charcoal">{petInfo.breed}</Text>
             </View>
             
             {service === 'Hotel' && (
-              <View className="mt-4 bg-orange-50 p-3 rounded-xl border border-orange-100">
-                <Text className="text-xs text-orange-600 mb-1 font-semibold">Otel Tarihleri</Text>
-                <Text className="text-sm text-slate-700">{hotelState.checkInDate} ➡️ {hotelState.checkOutDate}</Text>
+              <View className="mt-4 bg-mielon-gold/10 p-3 rounded-xl border border-orange-100">
+                <Text className="text-xs text-mielon-gold mb-1 font-semibold">Otel Tarihleri</Text>
+                <Text className="text-sm text-mielon-charcoal">{hotelState.checkInDate} ➡️ {hotelState.checkOutDate}</Text>
               </View>
             )}
           </View>
@@ -97,13 +97,13 @@ export default function CheckoutScreen() {
 
         {/* Kişisel Bilgiler */}
         <View className="mb-8 space-y-4">
-          <Text className="text-lg font-bold text-slate-800 mb-2 ml-1">İletişim Bilgileriniz</Text>
+          <Text className="text-lg font-bold text-mielon-charcoal mb-2 ml-1">İletişim Bilgileriniz</Text>
           
           <View className="flex-row space-x-4 mb-4">
             <View className="flex-1">
-              <Text className="text-sm font-semibold text-slate-700 mb-2 ml-1">Adınız</Text>
+              <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Adınız</Text>
               <TextInput 
-                className="bg-white px-4 py-4 rounded-2xl border border-slate-200 text-slate-800 shadow-sm"
+                className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
                 placeholder="Örn: Aykut"
                 placeholderTextColor="#94a3b8"
                 value={firstName}
@@ -111,9 +111,9 @@ export default function CheckoutScreen() {
               />
             </View>
             <View className="flex-1">
-              <Text className="text-sm font-semibold text-slate-700 mb-2 ml-1">Soyadınız</Text>
+              <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Soyadınız</Text>
               <TextInput 
-                className="bg-white px-4 py-4 rounded-2xl border border-slate-200 text-slate-800 shadow-sm"
+                className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
                 placeholder="Örn: Yılmaz"
                 placeholderTextColor="#94a3b8"
                 value={lastName}
@@ -123,9 +123,9 @@ export default function CheckoutScreen() {
           </View>
 
           <View>
-            <Text className="text-sm font-semibold text-slate-700 mb-2 ml-1">Telefon Numaranız</Text>
+            <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Telefon Numaranız</Text>
             <TextInput 
-              className="bg-white px-4 py-4 rounded-2xl border border-slate-200 text-slate-800 shadow-sm"
+              className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
               placeholder="Örn: 0555 123 45 67"
               placeholderTextColor="#94a3b8"
               keyboardType="phone-pad"
@@ -142,7 +142,7 @@ export default function CheckoutScreen() {
           disabled={!isFormValid}
         >
           <MaterialCommunityIcons name="whatsapp" size={24} color={isFormValid ? 'white' : '#94a3b8'} />
-          <Text className={`font-bold text-lg ml-2 ${isFormValid ? 'text-white' : 'text-slate-500'}`}>WhatsApp'a Gönder</Text>
+          <Text className={`font-bold text-lg ml-2 ${isFormValid ? 'text-white' : 'text-mielon-brown'}`}>WhatsApp'a Gönder</Text>
         </TouchableOpacity>
 
       </ScrollView>

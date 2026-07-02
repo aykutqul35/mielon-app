@@ -109,7 +109,7 @@ export default function HotelScreen() {
 
     // 2. Check-in tarihi
     if (checkInDate) {
-      marks[checkInDate] = { startingDay: true, color: '#fb923c', textColor: 'white' };
+      marks[checkInDate] = { startingDay: true, color: '#D4AF37', textColor: 'white' };
     }
     
     // 3. Aralığı ve Check-out tarihini işaretle
@@ -122,11 +122,11 @@ export default function HotelScreen() {
       while (iter < end) {
         const iterStr = iter.toISOString().split('T')[0];
         // Sadece aralıktaki açık günleri boya
-        marks[iterStr] = { color: '#ffedd5', textColor: '#fb923c' };
+        marks[iterStr] = { color: '#ffedd5', textColor: '#D4AF37' };
         iter.setDate(iter.getDate() + 1);
       }
 
-      marks[checkOutDate] = { endingDay: true, color: '#fb923c', textColor: 'white' };
+      marks[checkOutDate] = { endingDay: true, color: '#D4AF37', textColor: 'white' };
     }
 
     return marks;
@@ -145,12 +145,12 @@ export default function HotelScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-slate-50">
+    <SafeAreaView className="flex-1 bg-mielon-cream">
       <ScrollView className="flex-1 px-6 pt-4" showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 40 }}>
         
         <View className="mb-6">
-          <Text className="text-3xl font-bold text-slate-800">Pet Otel</Text>
-          <Text className="text-slate-500 mt-1">Dostunuz için takvimden uygun günleri seçin.</Text>
+          <Text className="text-3xl font-bold text-mielon-charcoal">Pet Otel</Text>
+          <Text className="text-mielon-brown mt-1">Dostunuz için takvimden uygun günleri seçin.</Text>
         </View>
 
         {/* Takvim */}
@@ -164,12 +164,12 @@ export default function HotelScreen() {
               backgroundColor: '#ffffff',
               calendarBackground: '#ffffff',
               textSectionTitleColor: '#94a3b8',
-              selectedDayBackgroundColor: '#fb923c',
+              selectedDayBackgroundColor: '#D4AF37',
               selectedDayTextColor: '#ffffff',
-              todayTextColor: '#fb923c',
+              todayTextColor: '#D4AF37',
               dayTextColor: '#334155',
               textDisabledColor: '#e2e8f0',
-              arrowColor: '#fb923c',
+              arrowColor: '#D4AF37',
               monthTextColor: '#1e293b',
               textMonthFontWeight: 'bold',
               textDayHeaderFontWeight: '500'
@@ -177,35 +177,35 @@ export default function HotelScreen() {
           />
           <View className="flex-row items-center justify-between mt-4 pt-4 border-t border-slate-100 px-2">
              <View>
-               <Text className="text-xs text-slate-400 mb-1">Check-in</Text>
-               <Text className={`font-semibold ${checkInDate ? 'text-orange-500' : 'text-slate-700'}`}>{checkInDate || 'Seçiniz'}</Text>
+               <Text className="text-xs text-mielon-brown mb-1">Check-in</Text>
+               <Text className={`font-semibold ${checkInDate ? 'text-mielon-gold' : 'text-mielon-charcoal'}`}>{checkInDate || 'Seçiniz'}</Text>
              </View>
              <MaterialCommunityIcons name="arrow-right" size={20} color="#cbd5e1" />
              <View className="items-end">
-               <Text className="text-xs text-slate-400 mb-1">Check-out</Text>
-               <Text className={`font-semibold ${checkOutDate ? 'text-orange-500' : 'text-slate-700'}`}>{checkOutDate || 'Seçiniz'}</Text>
+               <Text className="text-xs text-mielon-brown mb-1">Check-out</Text>
+               <Text className={`font-semibold ${checkOutDate ? 'text-mielon-gold' : 'text-mielon-charcoal'}`}>{checkOutDate || 'Seçiniz'}</Text>
              </View>
           </View>
         </View>
 
         {/* Tür Seçimi */}
         <View className="mb-6">
-          <Text className="text-sm font-semibold text-slate-700 mb-3 ml-1">Türü</Text>
+          <Text className="text-sm font-semibold text-mielon-charcoal mb-3 ml-1">Türü</Text>
           <View className="flex-row space-x-4">
             <TouchableOpacity 
-              className={`flex-1 flex-row items-center justify-center py-4 rounded-2xl border ${species === 'Dog' ? 'bg-orange-50 border-orange-400' : 'bg-white border-slate-200'} shadow-sm`}
+              className={`flex-1 flex-row items-center justify-center py-4 rounded-2xl border ${species === 'Dog' ? 'bg-mielon-gold/10 border-mielon-gold' : 'bg-white border-mielon-brown/20'} shadow-sm`}
               onPress={() => setSpecies('Dog')}
             >
-              <MaterialCommunityIcons name="dog" size={24} color={species === 'Dog' ? '#fb923c' : '#94a3b8'} />
-              <Text className={`ml-2 font-medium ${species === 'Dog' ? 'text-orange-600' : 'text-slate-500'}`}>Köpek</Text>
+              <MaterialCommunityIcons name="dog" size={24} color={species === 'Dog' ? '#D4AF37' : '#94a3b8'} />
+              <Text className={`ml-2 font-medium ${species === 'Dog' ? 'text-mielon-gold' : 'text-mielon-brown'}`}>Köpek</Text>
             </TouchableOpacity>
 
             <TouchableOpacity 
-              className={`flex-1 flex-row items-center justify-center py-4 rounded-2xl border ${species === 'Cat' ? 'bg-orange-50 border-orange-400' : 'bg-white border-slate-200'} shadow-sm`}
+              className={`flex-1 flex-row items-center justify-center py-4 rounded-2xl border ${species === 'Cat' ? 'bg-mielon-gold/10 border-mielon-gold' : 'bg-white border-mielon-brown/20'} shadow-sm`}
               onPress={() => setSpecies('Cat')}
             >
-              <MaterialCommunityIcons name="cat" size={24} color={species === 'Cat' ? '#fb923c' : '#94a3b8'} />
-              <Text className={`ml-2 font-medium ${species === 'Cat' ? 'text-orange-600' : 'text-slate-500'}`}>Kedi</Text>
+              <MaterialCommunityIcons name="cat" size={24} color={species === 'Cat' ? '#D4AF37' : '#94a3b8'} />
+              <Text className={`ml-2 font-medium ${species === 'Cat' ? 'text-mielon-gold' : 'text-mielon-brown'}`}>Kedi</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -213,9 +213,9 @@ export default function HotelScreen() {
         {/* Metin Girişleri */}
         <View className="mb-8 space-y-4">
           <View>
-            <Text className="text-sm font-semibold text-slate-700 mb-2 ml-1">Cinsi</Text>
+            <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Cinsi</Text>
             <TextInput 
-              className="bg-white px-4 py-4 rounded-2xl border border-slate-200 text-slate-800 shadow-sm"
+              className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
               placeholder="Örn: British Shorthair"
               placeholderTextColor="#94a3b8"
               value={breed}
@@ -224,9 +224,9 @@ export default function HotelScreen() {
           </View>
 
           <View>
-            <Text className="text-sm font-semibold text-slate-700 mb-2 ml-1">Yaşı</Text>
+            <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Yaşı</Text>
             <TextInput 
-              className="bg-white px-4 py-4 rounded-2xl border border-slate-200 text-slate-800 shadow-sm"
+              className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
               placeholder="Örn: 2"
               placeholderTextColor="#94a3b8"
               keyboardType="numeric"
@@ -238,11 +238,11 @@ export default function HotelScreen() {
 
         {/* Kaydet Butonu */}
         <TouchableOpacity 
-          className={`py-4 rounded-2xl items-center shadow-md ${isFormValid ? 'bg-orange-400' : 'bg-slate-300'}`}
+          className={`py-4 rounded-2xl items-center shadow-md ${isFormValid ? 'bg-mielon-gold' : 'bg-slate-300'}`}
           onPress={handleSubmit}
           disabled={!isFormValid}
         >
-          <Text className={`font-bold text-lg ${isFormValid ? 'text-white' : 'text-slate-500'}`}>Kaydet ve İlerle</Text>
+          <Text className={`font-bold text-lg ${isFormValid ? 'text-white' : 'text-mielon-brown'}`}>Kaydet ve İlerle</Text>
         </TouchableOpacity>
 
       </ScrollView>

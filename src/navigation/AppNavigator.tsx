@@ -15,10 +15,10 @@ export default function AppNavigator() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#fb923c', // Tailwind orange-400
-        tabBarInactiveTintColor: '#94a3b8', // Tailwind slate-400
+        tabBarActiveTintColor: '#D4AF37', // Mielon Gold
+        tabBarInactiveTintColor: '#5D4037', // Mielon Brown
         tabBarStyle: {
-          backgroundColor: '#ffffff',
+          backgroundColor: '#FAFAFA', // Mielon Cream
           borderTopWidth: 0,
           elevation: 10,
           shadowOpacity: 0.05,
