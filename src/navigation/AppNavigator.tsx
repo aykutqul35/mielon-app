@@ -3,10 +3,14 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
 import GroomingScreen from '../screens/GroomingScreen';
 import HotelScreen from '../screens/HotelScreen';
+import AdminDashboardScreen from '../screens/AdminDashboardScreen';
+import { useAuthStore } from '../store/useAuthStore';
 
 const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
+  const { isAdmin } = useAuthStore();
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -59,6 +63,18 @@ export default function AppNavigator() {
           ),
         }}
       />
+      {isAdmin && (
+        <Tab.Screen 
+          name="Admin" 
+          component={AdminDashboardScreen} 
+          options={{
+            tabBarLabel: 'Yönetim',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="shield-star" color={color} size={size} />
+            ),
+          }}
+        />
+      )}
     </Tab.Navigator>
   );
 }
