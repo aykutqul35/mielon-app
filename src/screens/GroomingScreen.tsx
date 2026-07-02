@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, Image, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Image, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
 import { useGroomingStore } from '../store/useGroomingStore';
+import FormInput from '../components/FormInput';
+import PrimaryButton from '../components/PrimaryButton';
 
 export default function GroomingScreen() {
   const { 
@@ -83,36 +85,28 @@ export default function GroomingScreen() {
         </View>
 
         {/* Metin Girişleri */}
-        <View className="mb-6 space-y-4">
-          <View>
-            <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Cinsi</Text>
-            <TextInput 
-              className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
-              placeholder="Örn: Golden Retriever"
-              placeholderTextColor="#94a3b8"
-              value={breed}
-              onChangeText={setBreed}
-            />
-          </View>
+        <View className="mb-6 space-y-2">
+          <FormInput 
+            label="Cinsi"
+            placeholder="Örn: Golden Retriever"
+            value={breed}
+            onChangeText={setBreed}
+          />
 
           <View className="flex-row space-x-4">
             <View className="flex-1">
-              <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Yaşı</Text>
-              <TextInput 
-                className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
+              <FormInput 
+                label="Yaşı"
                 placeholder="Örn: 2"
-                placeholderTextColor="#94a3b8"
                 keyboardType="numeric"
                 value={age}
                 onChangeText={setAge}
               />
             </View>
             <View className="flex-1">
-              <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Kilosu (kg)</Text>
-              <TextInput 
-                className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
+              <FormInput 
+                label="Kilosu (kg)"
                 placeholder="Örn: 15"
-                placeholderTextColor="#94a3b8"
                 keyboardType="numeric"
                 value={weight}
                 onChangeText={setWeight}
@@ -150,13 +144,11 @@ export default function GroomingScreen() {
         </View>
 
         {/* Kaydet Butonu */}
-        <TouchableOpacity 
-          className={`py-4 rounded-2xl items-center shadow-md ${isFormValid ? 'bg-mielon-gold' : 'bg-slate-300'}`}
+        <PrimaryButton 
+          title="Kaydet ve İlerle"
           onPress={handleSubmit}
           disabled={!isFormValid}
-        >
-          <Text className={`font-bold text-lg ${isFormValid ? 'text-white' : 'text-mielon-brown'}`}>Kaydet ve İlerle</Text>
-        </TouchableOpacity>
+        />
 
       </ScrollView>
     </SafeAreaView>

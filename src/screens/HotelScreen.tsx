@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -7,6 +7,8 @@ import { Calendar, DateData } from 'react-native-calendars';
 import { useHotelStore } from '../store/useHotelStore';
 import { fetchBlockedDates } from '../utils/mockApi';
 import { supabase, isSupabaseConfigured } from '../utils/supabase';
+import FormInput from '../components/FormInput';
+import PrimaryButton from '../components/PrimaryButton';
 
 export default function HotelScreen() {
   const { 
@@ -211,41 +213,29 @@ export default function HotelScreen() {
         </View>
 
         {/* Metin Girişleri */}
-        <View className="mb-8 space-y-4">
-          <View>
-            <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Cinsi</Text>
-            <TextInput 
-              className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
-              placeholder="Örn: British Shorthair"
-              placeholderTextColor="#94a3b8"
-              value={breed}
-              onChangeText={setBreed}
-            />
-          </View>
-
-          <View>
-            <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Yaşı</Text>
-            <TextInput 
-              className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
-              placeholder="Örn: 2"
-              placeholderTextColor="#94a3b8"
-              keyboardType="numeric"
-              value={age}
-              onChangeText={setAge}
-            />
-          </View>
+        <View className="mb-8 space-y-2">
+          <FormInput 
+            label="Cinsi"
+            placeholder="Örn: British Shorthair"
+            value={breed}
+            onChangeText={setBreed}
+          />
+          <FormInput 
+            label="Yaşı"
+            placeholder="Örn: 2"
+            keyboardType="numeric"
+            value={age}
+            onChangeText={setAge}
+          />
         </View>
 
         {/* Kaydet Butonu */}
-        <TouchableOpacity 
-          className={`py-4 rounded-2xl items-center shadow-md ${isFormValid ? 'bg-mielon-gold' : 'bg-slate-300'}`}
+        <PrimaryButton 
+          title="Kaydet ve İlerle"
           onPress={handleSubmit}
           disabled={!isFormValid}
-        >
-          <Text className={`font-bold text-lg ${isFormValid ? 'text-white' : 'text-mielon-brown'}`}>Kaydet ve İlerle</Text>
-        </TouchableOpacity>
+        />
 
       </ScrollView>
     </SafeAreaView>
   );
-}

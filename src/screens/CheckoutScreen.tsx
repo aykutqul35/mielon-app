@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -7,6 +7,8 @@ import { useGroomingStore } from '../store/useGroomingStore';
 import { useHotelStore } from '../store/useHotelStore';
 import { sendWhatsAppMessage } from '../utils/whatsapp';
 import { insertAppointment } from '../utils/supabase';
+import FormInput from '../components/FormInput';
+import PrimaryButton from '../components/PrimaryButton';
 
 export default function CheckoutScreen() {
   const route = useRoute<any>();
@@ -96,54 +98,45 @@ export default function CheckoutScreen() {
         </View>
 
         {/* Kişisel Bilgiler */}
-        <View className="mb-8 space-y-4">
+        <View className="mb-8 space-y-2">
           <Text className="text-lg font-bold text-mielon-charcoal mb-2 ml-1">İletişim Bilgileriniz</Text>
           
-          <View className="flex-row space-x-4 mb-4">
+          <View className="flex-row space-x-4 mb-2">
             <View className="flex-1">
-              <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Adınız</Text>
-              <TextInput 
-                className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
+              <FormInput 
+                label="Adınız"
                 placeholder="Örn: Aykut"
-                placeholderTextColor="#94a3b8"
                 value={firstName}
                 onChangeText={setFirstName}
               />
             </View>
             <View className="flex-1">
-              <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Soyadınız</Text>
-              <TextInput 
-                className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
+              <FormInput 
+                label="Soyadınız"
                 placeholder="Örn: Yılmaz"
-                placeholderTextColor="#94a3b8"
                 value={lastName}
                 onChangeText={setLastName}
               />
             </View>
           </View>
 
-          <View>
-            <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Telefon Numaranız</Text>
-            <TextInput 
-              className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
-              placeholder="Örn: 0555 123 45 67"
-              placeholderTextColor="#94a3b8"
-              keyboardType="phone-pad"
-              value={phone}
-              onChangeText={setPhone}
-            />
-          </View>
+          <FormInput 
+            label="Telefon Numaranız"
+            placeholder="Örn: 0555 123 45 67"
+            keyboardType="phone-pad"
+            value={phone}
+            onChangeText={setPhone}
+          />
         </View>
 
         {/* WhatsApp Butonu */}
-        <TouchableOpacity 
-          className={`py-4 rounded-2xl flex-row items-center justify-center shadow-md ${isFormValid ? 'bg-[#25D366]' : 'bg-slate-300'}`}
+        <PrimaryButton 
+          title="WhatsApp'a Gönder"
           onPress={handleCheckout}
           disabled={!isFormValid}
-        >
-          <MaterialCommunityIcons name="whatsapp" size={24} color={isFormValid ? 'white' : '#94a3b8'} />
-          <Text className={`font-bold text-lg ml-2 ${isFormValid ? 'text-white' : 'text-mielon-brown'}`}>WhatsApp'a Gönder</Text>
-        </TouchableOpacity>
+          icon={<MaterialCommunityIcons name="whatsapp" size={24} color="white" />}
+          style={{ backgroundColor: isFormValid ? '#25D366' : '#cbd5e1' }}
+        />
 
       </ScrollView>
     </SafeAreaView>

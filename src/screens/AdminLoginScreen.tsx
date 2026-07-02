@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { supabase, isSupabaseConfigured } from '../utils/supabase';
+import FormInput from '../components/FormInput';
+import PrimaryButton from '../components/PrimaryButton';
 
 export default function AdminLoginScreen() {
   const navigation = useNavigation<any>();
@@ -50,52 +52,39 @@ export default function AdminLoginScreen() {
       </TouchableOpacity>
 
       <View className="items-center mb-8">
-        <View className="w-20 h-20 bg-orange-100 rounded-full items-center justify-center mb-4">
+        <View className="w-20 h-20 bg-mielon-gold/10 rounded-full items-center justify-center mb-4">
           <MaterialCommunityIcons name="shield-lock-outline" size={40} color="#D4AF37" />
         </View>
         <Text className="text-3xl font-bold text-mielon-charcoal">Yönetici Girişi</Text>
         <Text className="text-mielon-brown mt-2 text-center">Sadece yetkili personel içindir.</Text>
       </View>
 
-      <View className="mb-8 space-y-4">
-        <View>
-          <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">E-posta</Text>
-          <TextInput 
-            className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
-            placeholder="admin@mielon.com"
-            placeholderTextColor="#94a3b8"
-            keyboardType="email-address"
-            autoCapitalize="none"
-            value={email}
-            onChangeText={setEmail}
-          />
-        </View>
+      <View className="mb-8 space-y-2">
+        <FormInput 
+          label="E-posta"
+          placeholder="admin@mielon.com"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          value={email}
+          onChangeText={setEmail}
+        />
 
-        <View>
-          <Text className="text-sm font-semibold text-mielon-charcoal mb-2 ml-1">Şifre</Text>
-          <TextInput 
-            className="bg-white px-4 py-4 rounded-2xl border border-mielon-brown/20 text-mielon-charcoal shadow-sm"
-            placeholder="••••••••"
-            placeholderTextColor="#94a3b8"
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
-        </View>
+        <FormInput 
+          label="Şifre"
+          placeholder="••••••••"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        />
       </View>
 
-      <TouchableOpacity 
-        className={`py-4 rounded-2xl items-center shadow-md flex-row justify-center ${loading ? 'bg-orange-300' : 'bg-mielon-gold'}`}
+      <PrimaryButton 
+        title="Giriş Yap"
         onPress={handleLogin}
+        loading={loading}
         disabled={loading}
-      >
-        {loading ? <ActivityIndicator color="white" /> : (
-          <>
-            <MaterialCommunityIcons name="login" size={24} color="white" />
-            <Text className="font-bold text-lg text-white ml-2">Giriş Yap</Text>
-          </>
-        )}
-      </TouchableOpacity>
+        icon={<MaterialCommunityIcons name="login" size={24} color="white" />}
+      />
     </SafeAreaView>
   );
 }

@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import ServiceCard from '../components/ServiceCard';
 
 export default function HomeScreen() {
   const navigation = useNavigation<any>();
@@ -24,31 +25,20 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </View>
 
-      <View className="bg-white rounded-3xl p-6 shadow-sm mb-4">
-        <Text className="text-xl font-bold text-mielon-charcoal mb-2">Pet Kuaför</Text>
-        <Text className="text-mielon-brown mb-4 leading-5">
-          Dostunuzun tüy bakımını profesyonellere bırakın.
-        </Text>
-        <TouchableOpacity 
-          className="bg-mielon-gold rounded-xl py-3 items-center shadow-sm"
-          onPress={() => navigation.navigate('Grooming')}
-        >
-          <Text className="text-white font-semibold">İncele</Text>
-        </TouchableOpacity>
-      </View>
+      <ServiceCard 
+        title="Pet Kuaför"
+        description="Dostunuzun tüy bakımını profesyonellere bırakın."
+        buttonText="İncele"
+        className="mb-4"
+        onPress={() => navigation.navigate('Grooming')}
+      />
 
-      <View className="bg-white rounded-3xl p-6 shadow-sm">
-        <Text className="text-xl font-bold text-mielon-charcoal mb-2">Pet Otel</Text>
-        <Text className="text-mielon-brown mb-4 leading-5">
-          Siz tatildeyken dostunuz da bizim misafirimiz olsun. Güvenli ve sıcak bir ortam.
-        </Text>
-        <TouchableOpacity 
-          className="bg-mielon-gold rounded-xl py-3 items-center shadow-sm"
-          onPress={() => navigation.navigate('Hotel')}
-        >
-          <Text className="text-white font-semibold">İncele</Text>
-        </TouchableOpacity>
-      </View>
+      <ServiceCard 
+        title="Pet Otel"
+        description="Siz tatildeyken dostunuz da bizim misafirimiz olsun. Güvenli ve sıcak bir ortam."
+        buttonText="İncele"
+        onPress={() => navigation.navigate('Hotel')}
+      />
     </SafeAreaView>
   );
 }
