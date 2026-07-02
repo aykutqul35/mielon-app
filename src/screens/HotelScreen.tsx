@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Calendar, DateData } from 'react-native-calendars';
 import { useHotelStore } from '../store/useHotelStore';
 import { fetchBlockedDates } from '../utils/mockApi';
+import { supabase, isSupabaseConfigured } from '../utils/supabase';
 
 export default function HotelScreen() {
   const { 
@@ -18,8 +19,35 @@ export default function HotelScreen() {
   const [currentSelection, setCurrentSelection] = useState<'checkIn' | 'checkOut'>('checkIn');
 
   useEffect(() => {
-    // Admin tarafından kapatılmış günleri (Mock API) çekiyoruz
-    setBlockedDates(fetchBlockedDates());
+    if (isSupabaseConfigured && supabase) {
+      // 1. Initial Fetch
+      const fetchSupabaseBlockedDates = async () => {
+        const { data, error } = await supabase
+          .from('BlockedDates')
+          .select('date')
+          .eq('is_blocked', true);
+        
+        if (!error && data) {
+          setBlockedDates(data.map((item: any) => item.date));
+        }
+      };
+      
+      fetchSupabaseBlockedDates();
+
+      // 2. Subscribe to Real-time changes
+      const channel = supabase.channel('blocked-dates-changes')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'BlockedDates' }, () => {
+          fetchSupabaseBlockedDates();
+        })
+        .subscribe();
+
+      return () => {
+        supabase.removeChannel(channel);
+      };
+    } else {
+      // Fallback: Mock API (Supabase anahtarları yoksa)
+      setBlockedDates(fetchBlockedDates());
+    }
   }, []);
 
   const handleDayPress = (day: DateData) => {
