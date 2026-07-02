@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import { Calendar, DateData } from 'react-native-calendars';
 import { useHotelStore } from '../store/useHotelStore';
 import { fetchBlockedDates } from '../utils/mockApi';
@@ -103,6 +104,8 @@ export default function HotelScreen() {
     return marks;
   }, [blockedDates, checkInDate, checkOutDate]);
 
+  const navigation = useNavigation<any>();
+
   const isFormValid = checkInDate !== null && checkOutDate !== null && checkOutDate !== '' && species !== null && breed.trim() !== '' && age.trim() !== '';
 
   const handleSubmit = () => {
@@ -110,7 +113,7 @@ export default function HotelScreen() {
       Alert.alert("Eksik Bilgi", "Lütfen tarih aralığını ve dostumuzun bilgilerini doldurun.");
       return;
     }
-    Alert.alert("Harika!", "Otel rezervasyonunuz başarıyla kaydedildi! (Zustand state güncel)");
+    navigation.navigate('Checkout', { service: 'Hotel' });
   };
 
   return (

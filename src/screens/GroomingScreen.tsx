@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, Image, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
 import { useGroomingStore } from '../store/useGroomingStore';
 
@@ -38,6 +39,8 @@ export default function GroomingScreen() {
     }
   };
 
+  const navigation = useNavigation<any>();
+
   const isFormValid = species !== null && breed.trim() !== '' && age.trim() !== '' && weight.trim() !== '';
 
   const handleSubmit = () => {
@@ -45,7 +48,7 @@ export default function GroomingScreen() {
       Alert.alert("Eksik Bilgi", "Lütfen tüm zorunlu alanları doldurun.");
       return;
     }
-    Alert.alert("Harika!", "Form başarıyla Zustand state'ine kaydedildi!");
+    navigation.navigate('Checkout', { service: 'Grooming' });
   };
 
   return (
