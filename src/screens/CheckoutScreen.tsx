@@ -6,6 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useGroomingStore } from '../store/useGroomingStore';
 import { useHotelStore } from '../store/useHotelStore';
 import { sendWhatsAppMessage } from '../utils/whatsapp';
+import { insertAppointment } from '../utils/supabase';
 
 export default function CheckoutScreen() {
   const route = useRoute<any>();
@@ -27,6 +28,14 @@ export default function CheckoutScreen() {
     if (!isFormValid) {
       Alert.alert('Eksik Bilgi', 'Lütfen kişisel bilgilerinizi eksiksiz doldurun.');
       return;
+    }
+
+    // Veritabanına kaydet
+    const customerName = `${firstName} ${lastName}`;
+    const isInserted = await insertAppointment(customerName, phone, service, petInfo);
+
+    if (!isInserted) {
+      console.warn("Veritabanına kayıt başarısız oldu, ancak WhatsApp ile devam ediliyor.");
     }
 
     // WhatsApp'a Gönder

@@ -49,3 +49,39 @@ export const toggleBlockedDate = async (dateStr: string) => {
     console.error('Toggle function error:', err);
   }
 };
+
+/**
+ * Randevuyu veritabanına kaydeder
+ */
+export const insertAppointment = async (
+  customerName: string,
+  phone: string,
+  serviceType: string,
+  petDetails: any
+) => {
+  if (!supabase) {
+    console.warn('[Mock] Supabase yapılandırılmamış. Randevu kaydı simüle edildi.');
+    return true; // Simulate success
+  }
+
+  try {
+    const { error } = await supabase
+      .from('Appointments')
+      .insert({
+        customer_name: customerName,
+        phone,
+        service_type: serviceType,
+        pet_details: petDetails,
+        status: 'pending',
+      });
+
+    if (error) {
+      console.error('Insert appointment error:', error);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Insert appointment error:', err);
+    return false;
+  }
+};
