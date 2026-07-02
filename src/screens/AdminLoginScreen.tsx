@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { supabase, isSupabaseConfigured } from '../utils/supabase';
 import FormInput from '../components/FormInput';
@@ -48,12 +48,12 @@ export default function AdminLoginScreen() {
         onPress={() => navigation.goBack()} 
         className="absolute top-12 left-6 p-2"
       >
-        <MaterialCommunityIcons name="arrow-left" size={28} color="#334155" />
+        <Ionicons name="arrow-back-outline" size={28} color="#334155" />
       </TouchableOpacity>
 
       <View className="items-center mb-8">
         <View className="w-20 h-20 bg-mielon-gold/10 rounded-full items-center justify-center mb-4">
-          <MaterialCommunityIcons name="shield-lock-outline" size={40} color="#D4AF37" />
+          <Ionicons name="lock-closed-outline" size={40} color="#D4AF37" />
         </View>
         <Text className="text-3xl font-bold text-mielon-charcoal">Yönetici Girişi</Text>
         <Text className="text-mielon-brown mt-2 text-center">Sadece yetkili personel içindir.</Text>
@@ -83,7 +83,7 @@ export default function AdminLoginScreen() {
         onPress={handleLogin}
         loading={loading}
         disabled={loading}
-        icon={<MaterialCommunityIcons name="login" size={24} color="white" />}
+        icon={<Ionicons name="log-in-outline" size={24} color="white" />}
       />
     </SafeAreaView>
   );

@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/HomeScreen';
 import GroomingScreen from '../screens/GroomingScreen';
 import HotelScreen from '../screens/HotelScreen';
@@ -16,13 +16,15 @@ export default function AppNavigator() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#D4AF37', // Mielon Gold
-        tabBarInactiveTintColor: '#5D4037', // Mielon Brown
+        tabBarInactiveTintColor: '#94a3b8', // Soft Gray
         tabBarStyle: {
-          backgroundColor: '#FAFAFA', // Mielon Cream
+          backgroundColor: '#FFFFFF', // White background
           borderTopWidth: 0,
           elevation: 10,
-          shadowOpacity: 0.05,
-          shadowRadius: 10,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: -4 },
+          shadowOpacity: 0.04,
+          shadowRadius: 12,
           height: 85,
           paddingBottom: 25,
           paddingTop: 10,
@@ -39,7 +41,7 @@ export default function AppNavigator() {
         options={{
           tabBarLabel: 'Ana Sayfa',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home-variant-outline" color={color} size={size} />
+            <Ionicons name="home-outline" color={color} size={size} />
           ),
         }}
       />
@@ -49,7 +51,7 @@ export default function AppNavigator() {
         options={{
           tabBarLabel: 'Kuaför',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="content-cut" color={color} size={size} />
+            <Ionicons name="cut-outline" color={color} size={size} />
           ),
         }}
       />
@@ -59,7 +61,7 @@ export default function AppNavigator() {
         options={{
           tabBarLabel: 'Otel',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="domain" color={color} size={size} />
+            <Ionicons name="business-outline" color={color} size={size} />
           ),
         }}
       />
@@ -70,7 +72,7 @@ export default function AppNavigator() {
           options={{
             tabBarLabel: 'Yönetim',
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="shield-star" color={color} size={size} />
+              <Ionicons name="shield-checkmark-outline" color={color} size={size} />
             ),
           }}
         />

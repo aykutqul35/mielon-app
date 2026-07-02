@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRoute, useNavigation } from '@react-navigation/native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { useGroomingStore } from '../store/useGroomingStore';
 import { useHotelStore } from '../store/useHotelStore';
 import { sendWhatsAppMessage } from '../utils/whatsapp';
@@ -63,7 +63,7 @@ export default function CheckoutScreen() {
         {/* Header */}
         <View className="flex-row items-center mb-8">
           <TouchableOpacity onPress={() => navigation.goBack()} className="mr-4 mt-2">
-            <MaterialCommunityIcons name="arrow-left" size={28} color="#334155" />
+            <Ionicons name="arrow-back-outline" size={28} color="#334155" />
           </TouchableOpacity>
           <View className="mt-2">
             <Text className="text-3xl font-bold text-mielon-charcoal">Randevu Onayı</Text>
@@ -134,7 +134,8 @@ export default function CheckoutScreen() {
           title="WhatsApp'a Gönder"
           onPress={handleCheckout}
           disabled={!isFormValid}
-          icon={<MaterialCommunityIcons name="whatsapp" size={24} color="white" />}
+          icon={<Ionicons name="logo-whatsapp" size={24} color="white" />}
+
           style={{ backgroundColor: isFormValid ? '#25D366' : '#cbd5e1' }}
         />
 

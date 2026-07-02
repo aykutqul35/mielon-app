@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import ServiceCard from '../components/ServiceCard';
 
 export default function HomeScreen() {
@@ -21,7 +21,7 @@ export default function HomeScreen() {
           onLongPress={() => navigation.navigate('AdminLogin')}
           delayLongPress={1500}
         >
-          <MaterialCommunityIcons name="shield-lock" size={32} color="#000" />
+          <Ionicons name="lock-closed-outline" size={32} color="#000" />
         </TouchableOpacity>
       </View>
 

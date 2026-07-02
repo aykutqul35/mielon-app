@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { Calendar, DateData } from 'react-native-calendars';
 import { supabase, isSupabaseConfigured, toggleBlockedDate } from '../utils/supabase';
 import { useAuthStore } from '../store/useAuthStore';
@@ -110,7 +110,7 @@ export default function AdminDashboardScreen() {
           <Text className="text-mielon-brown mt-1">Takvim ve Gelen Kutusu</Text>
         </View>
         <TouchableOpacity onPress={handleLogout} className="bg-mielon-charcoal p-3 rounded-full">
-          <MaterialCommunityIcons name="logout" size={24} color="#5D4037" />
+          <Ionicons name="log-out-outline" size={24} color="#5D4037" />
         </TouchableOpacity>
       </View>
 
@@ -171,7 +171,7 @@ export default function AdminDashboardScreen() {
               />
             ) : (
               <View className="items-center justify-center mt-10">
-                <MaterialCommunityIcons name="inbox-outline" size={48} color="#475569" />
+                <Ionicons name="file-tray-outline" size={48} color="#475569" />
                 <Text className="text-mielon-brown mt-4">Henüz randevu bulunmuyor.</Text>
               </View>
             )}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { Calendar, DateData } from 'react-native-calendars';
 import { useHotelStore } from '../store/useHotelStore';
@@ -182,7 +182,7 @@ export default function HotelScreen() {
                <Text className="text-xs text-mielon-brown mb-1">Check-in</Text>
                <Text className={`font-semibold ${checkInDate ? 'text-mielon-gold' : 'text-mielon-charcoal'}`}>{checkInDate || 'Seçiniz'}</Text>
              </View>
-             <MaterialCommunityIcons name="arrow-right" size={20} color="#cbd5e1" />
+             <Ionicons name="arrow-forward-outline" size={20} color="#cbd5e1" />
              <View className="items-end">
                <Text className="text-xs text-mielon-brown mb-1">Check-out</Text>
                <Text className={`font-semibold ${checkOutDate ? 'text-mielon-gold' : 'text-mielon-charcoal'}`}>{checkOutDate || 'Seçiniz'}</Text>

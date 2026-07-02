@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView, Image, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
 import { useGroomingStore } from '../store/useGroomingStore';
@@ -127,7 +127,7 @@ export default function GroomingScreen() {
                   className="absolute top-1 right-1 bg-black/60 w-6 h-6 rounded-full items-center justify-center"
                   onPress={() => removePhoto(index)}
                 >
-                  <MaterialCommunityIcons name="close" size={14} color="white" />
+                  <Ionicons name="close" size={14} color="white" />
                 </TouchableOpacity>
               </View>
             ))}
@@ -137,7 +137,7 @@ export default function GroomingScreen() {
                 className="w-[75px] h-[75px] rounded-2xl border-2 border-dashed border-slate-300 items-center justify-center bg-white"
                 onPress={handlePickImage}
               >
-                <MaterialCommunityIcons name="camera-plus" size={24} color="#94a3b8" />
+                <Ionicons name="camera-outline" size={24} color="#94a3b8" />
               </TouchableOpacity>
             )}
           </View>
