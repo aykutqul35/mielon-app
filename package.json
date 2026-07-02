@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.ts",
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^7.18.5",
+    "@react-navigation/native": "^7.3.5",
     "expo": "~57.0.1",
     "expo-image-picker": "~57.0.1",
     "expo-status-bar": "~57.0.0",
@@ -10,6 +12,8 @@
     "react": "19.2.3",
     "react-native": "0.86.0",
     "react-native-calendars": "^1.1314.0",
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-screens": "4.25.2",
     "zustand": "^5.0.14"
   },
   "devDependencies": {
